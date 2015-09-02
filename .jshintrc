@@ -1,0 +1,35 @@
+{
+	"devel": true,
+
+	/* Additional global variables */
+	"predef": [
+		"require",
+		"module"
+	],
+	"globals": {
+		"require": false,
+		"module": false,
+		"$": true,
+		"jQuery": true
+	},
+
+	/* Enforcing options */
+	"camelcase": true,    // Force all variable names to use either camelCase or UPPER_CASE with underscores
+	"curly": true,        // Require {} for every new block or scope
+	"eqeqeq": true,       // Require triple equals i.e. `===`
+	"forin": true,        // Prohibit `for in` loops without `hasOwnPrototype`
+	"immed": true,        // Require immediate invocations to be wrapped in parens e.g. `( function(){}() );`
+	"latedef": true,      // Prohibit variable use before definition
+	"newcap": true,       // Require names of constructor functions to be capitalized
+	"noarg": true,        // Prohibit use of `arguments.caller` and `arguments.callee`
+	"noempty": false,     // Prohibit empty blocks
+	"nonew": true,        // Prohibit use of constructors for side-effects
+	"quotmark": "single", // Require quote marks to be consistently single quotes
+	"undef": true,        // Require all non-global variables be declared before they are used
+	"unused": true,       // Warn about unused variables
+	"strict": false,      // Require ES5 strict mode
+	"trailing": true,     // Prohibit trailing whitespace in code
+
+	/* Relaxing options */
+	"asi": true          // Require semicolons at the end of lines
+}
