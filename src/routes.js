@@ -6,6 +6,8 @@
     var Router = require('react-router');
     var DefaultRoute = Router.DefaultRoute;
     var Route = Router.Route;
+    var NotFoundRoute = Router.NotFoundRoute;
+    var Redirect = Router.Redirect;
 
     // If path is undefined then name is assumed to be the path
     var routes = (
@@ -13,6 +15,9 @@
             <DefaultRoute handler={ require('./components/homePage') } />
             <Route name="authors" handler={ require('./components/authors/authorPage') } />
             <Route name="about" handler={ require('./components/about/aboutPage') } />
+            <NotFoundRoute handler={ require('./components/notFoundPage') } />
+            <Redirect from="about-us" to="about" />
+            <Redirect from="about/*" to="about" />
         </Route>
     );
 
@@ -39,6 +44,11 @@
      JSX: <Link to="user" params={{userId: 1}}>Bobby Tables</Link> // references route by name
         Compiles to: <a href="/user/1">Bobby Tables</a>
 
+    REDIRECTS:
+    Alias Redirect:
+    var Redirect = Router.Redirect;
+    Create a new route:
+    <Redirect from="old-path" to="name-of-new-path" />
     */
 
     module.exports = routes;
