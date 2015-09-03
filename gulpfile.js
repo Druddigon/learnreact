@@ -8,15 +8,18 @@ var reactify = require('reactify'); // Tranforms React JSX to JS
 var source = require('vinyl-source-stream'); // Uses conventional text streams with Gulp
 var sass = require('gulp-sass');
 var eslint = require('gulp-eslint'); // Lint JS files, including JSX
+var rename = require('gulp-rename');
 
 var config = {
     port: 9005,
     devBaseUrl: 'http://localhost',
     paths: {
         html: './src/*.html',
-        js: '.src/**/*.js',
+        js: './src/**/*.js',
         mainJs: './src/main.js',
+        css: './src/**/*.scss',
         mainCss: './src/main.scss',
+        images: './src/images/*',
         dist: './dist'
     }
 };
@@ -55,9 +58,20 @@ gulp.task('js', function() {
 gulp.task('css', function() {
     gulp.src(config.paths.mainCss)
         .pipe(sass())
+        .pipe(rename('bundle.css'))
         .pipe(gulp.dest(config.paths.dist + '/css'))
         .pipe(connect.reload());
 });
+
+/*gulp.task('images', function() {
+    gulp.src(config.paths.images)
+        .pipe(gulp.dest(config.paths.dist + '/images'))
+        .pipe(connect.reload());
+
+    // publish favicon
+    gulp.src('./src/favicon.ico')
+        .pipe(gulp.dest(config.paths.dist));
+});*/
 
 gulp.task('lint', function() {
     // Must be returned so you can see results of linting
@@ -69,7 +83,7 @@ gulp.task('lint', function() {
 gulp.task('watch', function() {
     gulp.watch(config.paths.html, ['html']);
     gulp.watch(config.paths.js, ['js']);
-    gulp.watch(config.paths.js, ['css']);
+    gulp.watch(config.paths.css, ['css']);
 })
 
 gulp.task('default', ['html', 'js', 'css', 'lint', 'open', 'watch']);
