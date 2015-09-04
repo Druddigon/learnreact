@@ -53,7 +53,7 @@
 
     URLS:
     Hash location styles, e.g. localhost:9005/#/authors - better supported
-    HTML5 history style, e.g. localhost:9005/authors - supports isomorphic JS, cleaner
+    HTML5 HistoryLocation style, e.g. localhost:9005/authors - supports isomorphic JS, cleaner
         Have to configure server to support clean URLs, direct all requests to client side index page
     */
 

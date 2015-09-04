@@ -18,7 +18,10 @@ var config = {
         js: './src/**/*.js',
         mainJs: './src/main.js',
         css: './src/**/*.scss',
-        mainCss: './src/main.scss',
+        mainCss: [
+                './src/main.scss',
+                'node_modules/toastr/build/toastr.css'
+        ],
         images: './src/images/*',
         dist: './dist'
     }
