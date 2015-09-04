@@ -21,6 +21,7 @@
         },
 
         render: function() {
+            // React needs 1 top level component (e.g. wrap in div if there's >1
             return (
                 <div>
                     <h1>Authors</h1>
