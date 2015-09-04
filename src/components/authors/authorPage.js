@@ -2,6 +2,8 @@
     'use strict';
 
     var React = require('react');
+    var Router = require('react-router');
+    var Link = require('react-router').Link;
     var AuthorApi = require('../../api/authorApi');
     var AuthorList = require('./authorList');
 
@@ -9,7 +11,7 @@
         getInitialState: function() {
             return {
                 authors: []
-            }
+            };
         },
 
         componentDidMount: function() {
@@ -22,6 +24,7 @@
             return (
                 <div>
                     <h1>Authors</h1>
+                    <Link to="addAuthor">Add Author</Link>
                     <AuthorList authors={ this.state.authors } />
                 </div>
             );

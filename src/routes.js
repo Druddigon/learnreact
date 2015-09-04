@@ -14,6 +14,7 @@
         <Route name="app" path="/" handler={ require('./components/app') }>
             <DefaultRoute handler={ require('./components/homePage') } />
             <Route name="authors" handler={ require('./components/authors/authorPage') } />
+            <Route name="addAuthor" path="author" handler={ require('./components/authors/manageAuthorPage') } />
             <Route name="about" handler={ require('./components/about/aboutPage') } />
             <NotFoundRoute handler={ require('./components/notFoundPage') } />
             <Redirect from="about-us" to="about" />
@@ -49,6 +50,11 @@
     var Redirect = Router.Redirect;
     Create a new route:
     <Redirect from="old-path" to="name-of-new-path" />
+
+    URLS:
+    Hash location styles, e.g. localhost:9005/#/authors - better supported
+    HTML5 history style, e.g. localhost:9005/authors - supports isomorphic JS, cleaner
+        Have to configure server to support clean URLs, direct all requests to client side index page
     */
 
     module.exports = routes;
