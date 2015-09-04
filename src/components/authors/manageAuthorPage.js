@@ -12,15 +12,26 @@
             Router.Navigation
         ],
 
+        statics: {
+            willTransitionFrom: function(transition, component) {
+                if (component.state.dirty && !confirm('Leave without saving?')) {
+                    transition.abort();
+                }
+            }
+        },
+
         getInitialState: function() {
+            // declare initial state variables
             return {
                 author: { id: '', firstName: '', lastName: '' },
-                errors: {}
+                errors: {},
+                dirty: false
             };
         },
 
         setAuthorState: function(event) {
             // Called for every key press
+            this.setState({ dirty: true });
             var field = event.target.name;
             var value = event.target.value;
             this.state.author[field] = value;
@@ -55,6 +66,7 @@
             }
 
             AuthorApi.saveAuthor(this.state.author);
+            this.setState({ dirty: false });
             Toastr.success('Author saved.');
             this.transitionTo('authors');
         },
