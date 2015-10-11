@@ -24,7 +24,7 @@
         },
 
         _onChange: function() {
-            this.setState({ authors: AuthorStore.getAllAuthors });
+            this.setState({ authors: AuthorStore.getAllAuthors() });
         },
 
         render: function() {
