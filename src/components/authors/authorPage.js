@@ -16,7 +16,15 @@
         },
 
         componentDidMount: function() {
+            AuthorStore.addChangeListener(this._onChange);
+        },
 
+        componentWillUnmount: function() {
+            AuthorStore.removeChangeListener(this._onChange);
+        },
+
+        _onChange: function() {
+            this.setState({ authors: AuthorStore.getAllAuthors });
         },
 
         render: function() {
