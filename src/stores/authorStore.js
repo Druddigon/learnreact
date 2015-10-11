@@ -58,6 +58,13 @@
                 // that have registered with the store will be notified and know to update UI
                 AuthorStore.emitChange();
                 break;
+            case ActionTypes.UPDATE_AUTHOR:
+                // Replace existing author with new author
+                var existingAuthor = _.find(_authors, { id: action.author.id });
+                var existingAuthorIndex = _.indexOf(_authors, existingAuthor);
+                _authors.splice(existingAuthorIndex, 1, action.author);
+                AuthorStore.emitChange();
+                break;
         }
     });
 
