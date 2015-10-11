@@ -48,6 +48,10 @@
         // Called every time any action is dispatched
         // Every store registered with dispatcher is notified of every single action
         switch(action.actionType) {
+            case ActionTypes.INITIALIZE:
+                _authors = action.initialData.authors;
+                AuthorStore.emitChange();
+                break;
             case ActionTypes.CREATE_AUTHOR:
                 _authors.push(action.author);
                 // Anytime store changes, emitChange should be called so that any react components
